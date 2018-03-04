@@ -1,0 +1,30 @@
+.home-content-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.home-content-container li {
+  list-style-type: none;
+}
+
+.order-sizes-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.order-toppings-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.display-orders-container {
+  /* TODO */
+}
+
+.prices-text {
+  padding-left: 50px;
+}
+
+.align-right {
+  text-align: right;
+}

@@ -13,4 +13,19 @@ body {
 
 button:disabled {
   opacity: 0.5;
+  cursor: not-allowed;
+}
+
+button {
+  color: white;
+  background-color: #337ab7;
+  border-color: #2e6da4;
+  padding: 6px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+button:hover {
+  background-color: #286090;
+  border-color: #204d74;
 }
