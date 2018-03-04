@@ -1,7 +1,7 @@
 export const AUTHENTICATE_ADMIN = 'authenticate/AUTHENTICATE_ADMIN';
 export const LOG_OUT = 'authenticate/LOG_OUT';
 
-const initialState = {
+export const initialState = {
   isLoggedIn: false,
   invalidCredentials: false
 };

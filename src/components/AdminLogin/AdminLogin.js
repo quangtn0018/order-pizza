@@ -30,32 +30,41 @@ class AdminLogin extends React.Component {
     });
   };
 
+  renderUserNameInput() {
+    return (
+      <div className="label-input-container">
+        <label htmlFor="userName">User Name</label>
+        <input
+          id="userName"
+          type="text"
+          value={this.state.userName}
+          onChange={e => this.handleChange(e, 'userName')}
+        />
+      </div>
+    );
+  }
+
+  renderPasswordInput() {
+    return (
+      <div className="label-input-container">
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="text"
+          value={this.state.password}
+          onChange={e => this.handleChange(e, 'password')}
+        />
+      </div>
+    );
+  }
+
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="admin-login-form">
-        <div className="label-input-container">
-          <label htmlFor="userName">User Name</label>
-          <input
-            id="userName"
-            type="text"
-            value={this.state.userName}
-            onChange={e => this.handleChange(e, 'userName')}
-          />
-        </div>
-
-        <div className="label-input-container">
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="text"
-            value={this.state.password}
-            onChange={e => this.handleChange(e, 'password')}
-          />
-        </div>
+        {this.renderUserNameInput()}
+        {this.renderPasswordInput()}
         <input type="submit" value="Submit" className="submit-input" />
-        {this.props.invalidCredentials && (
-          <p>Invalid Credentials. Try again</p>
-        )}
+        {this.props.invalidCredentials && <p>Invalid Credentials. Try again</p>}
       </form>
     );
   }

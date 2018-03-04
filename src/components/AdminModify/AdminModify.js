@@ -14,16 +14,17 @@ class AdminModify extends React.Component {
 
     this.state = {
       toppings,
-      sizes
+      sizes,
+      updateSuccess: false
     };
   }
 
   handleChange = (evt, itemType, itemKey) => {
     // TODO errors when value is empty
     if (!evt.target.value) {
-      return
+      return;
     }
-    
+
     let items = this.state[itemType].map(item => {
       return {
         ...item,
@@ -46,6 +47,17 @@ class AdminModify extends React.Component {
     };
 
     this.props.updatePizzaDataPrices(pizzaData);
+
+    // TODO handle update success better
+    this.setState({
+      updateSuccess: true
+    });
+
+    setTimeout(() => {
+      this.setState({
+        updateSuccess: false
+      });
+    }, 5000);
   };
 
   handleLogOutOnClick = () => {
@@ -117,6 +129,9 @@ class AdminModify extends React.Component {
       <div>
         <button onClick={this.handleLogOutOnClick}>Log Out</button>
         <h2>You may change the prices for any toppings and sizes</h2>
+        {this.state.updateSuccess && (
+          <h4 className="green-color">Prices update successfully</h4>
+        )}
         {this.renderPizzaData()}
       </div>
     );

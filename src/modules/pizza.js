@@ -55,7 +55,6 @@ export const fetchPizzaData = () => {
   };
 };
 
-// TODO post to backend and update data
 // TODO notification when update is successful/unsuccesful
 export const updatePizzaDataPrices = pizzaData => {
   return dispatch => {
