@@ -1,6 +1,5 @@
 .home-content-container {
   display: flex;
-  justify-content: space-between;
 }
 
 .home-content-container li {
@@ -17,14 +16,14 @@
   justify-content: space-between;
 }
 
-.display-orders-container {
-  /* TODO */
-}
-
 .prices-text {
   padding-left: 50px;
 }
 
 .align-right {
   text-align: right;
+}
+
+.display-orders-container {
+  padding-left: 50px;
 }

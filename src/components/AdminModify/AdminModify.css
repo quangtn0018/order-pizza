@@ -1,0 +1,15 @@
+.admin-modify-form {
+  max-width: 300px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.admin-modify-form .submit-input {
+  margin-top: 10px;
+  align-self: center;
+}

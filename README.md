@@ -1,17 +1,18 @@
 Backend
+
+credentials to login for admin page
+username: admin
+password: 123
+
 ```
 cd react-backend
 yarn
-
-// To run
-PORT=3001 node bin/www
+npm start
 
 ```
 
 Frontend
 ```
 yarn
-
-// to run
 yarn start // on port 3000
 ```

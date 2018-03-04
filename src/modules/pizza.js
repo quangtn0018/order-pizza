@@ -1,5 +1,6 @@
 export const ORDER_COMPELTE = 'pizza/ORDER_COMPLETE';
 export const FETCH_PIZZA_DATA = 'pizza/FETCH_PIZZA_DATA';
+export const UPDATE_PIZZA_DATA_PRICES = 'pizza/UPDATE_PIZZA_DATA_PRICES';
 
 const initialState = {
   orderCount: 0,
@@ -20,7 +21,12 @@ export default (state = initialState, action) => {
     case FETCH_PIZZA_DATA:
       return {
         ...state,
-        pizzaData: action.payload ? action.payload : state.pizzaData
+        pizzaData: action.payload || state.pizzaData
+      };
+    case UPDATE_PIZZA_DATA_PRICES:
+      return {
+        ...state,
+        pizzaData: action.payload || state.pizzaData
       };
     default:
       return state;
@@ -46,5 +52,16 @@ export const fetchPizzaData = () => {
           payload: pizzasData
         });
       });
+  };
+};
+
+// TODO post to backend and update data
+// TODO notification when update is successful/unsuccesful
+export const updatePizzaDataPrices = pizzaData => {
+  return dispatch => {
+    dispatch({
+      type: UPDATE_PIZZA_DATA_PRICES,
+      payload: pizzaData
+    });
   };
 };

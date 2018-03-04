@@ -2,6 +2,8 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import './AdminLogin.css';
+import { authenticateUser } from '../../modules/authenticate';
 
 class AdminLogin extends React.Component {
   constructor(props) {
@@ -13,35 +15,63 @@ class AdminLogin extends React.Component {
     };
   }
 
-  handleChange = (event) => {
-    this.setState({value: event.target.value});
-  }
+  handleChange = (evt, key) => {
+    this.setState({
+      [key]: evt.target.value
+    });
+  };
 
-  handleSubmit = (event) => {
-    alert('A name was submitted: ' + this.state.value);
-    event.preventDefault();
-  }
+  handleSubmit = evt => {
+    evt.preventDefault();
+
+    this.props.authenticateUser({
+      userName: this.state.userName,
+      password: this.state.password
+    });
+  };
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label>
-          Name:
+      <form onSubmit={this.handleSubmit} className="admin-login-form">
+        <div className="label-input-container">
+          <label htmlFor="userName">User Name</label>
           <input
+            id="userName"
             type="text"
-            value={this.state.value}
-            onChange={this.handleChange}
+            value={this.state.userName}
+            onChange={e => this.handleChange(e, 'userName')}
           />
-        </label>
-        <input type="submit" value="Submit" />
+        </div>
+
+        <div className="label-input-container">
+          <label htmlFor="password">Password</label>
+          <input
+            id="password"
+            type="text"
+            value={this.state.password}
+            onChange={e => this.handleChange(e, 'password')}
+          />
+        </div>
+        <input type="submit" value="Submit" className="submit-input" />
+        {this.props.invalidCredentials && (
+          <p>Invalid Credentials. Try again</p>
+        )}
       </form>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  invalidCredentials: state.authenticate.invalidCredentials
+});
 
-const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
+const mapDispatchToProps = dispatch =>
+  bindActionCreators(
+    {
+      authenticateUser
+    },
+    dispatch
+  );
 
 export default withRouter(
   connect(mapStateToProps, mapDispatchToProps)(AdminLogin)

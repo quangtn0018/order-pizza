@@ -2,29 +2,31 @@ import React from 'react';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import AdminLogin from '../AdminLogin/AdminLogin';
+import AdminModify from '../AdminModify/AdminModify';
 
 class Admin extends React.Component {
-  constructor(props) {
-    super(props);
+  renderAdminView() {
+    if (!this.props.isLoggedIn) {
+      return <AdminLogin />;
+    }
 
-    this.state = {
-      userName: '',
-      password: ''
-    };
+    return <AdminModify />;
   }
 
   render() {
     return (
       <div>
         <h1>Admin Page</h1>
-        show form to login then allow admin user to how forms so admin can
-        change prices
+        {this.renderAdminView()}
       </div>
     );
   }
 }
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  isLoggedIn: state.authenticate.isLoggedIn
+});
 
 const mapDispatchToProps = dispatch => bindActionCreators({}, dispatch);
 

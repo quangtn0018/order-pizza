@@ -7,11 +7,10 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var pizzaData = require('./routes/pizzaData');
-// TODO remove?
-var pizzaToppings = require('./routes/pizzaToppings');
-var pizzaSizes = require('./routes/pizzaSizes');
+var authenticateUser = require('./routes/authenticateUser');
 
 var app = express();
+var port = process.env.PORT || 8080;
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -27,9 +26,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/pizzaData', pizzaData);
-// TODO remove?
-app.use('/pizzaToppings', pizzaToppings);
-app.use('/pizzaSizes', pizzaSizes);
+app.use('/authenticateUser', authenticateUser);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -48,5 +45,8 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+app.listen(port);
+console.log('Server started! At http://localhost:' + port);
 
 module.exports = app;
