@@ -10,7 +10,6 @@ password: 123
 cd react-backend
 yarn
 npm start
-
 ```
 
 Frontend
