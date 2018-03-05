@@ -2,7 +2,7 @@ export const ORDER_COMPELTE = 'pizza/ORDER_COMPLETE';
 export const FETCH_PIZZA_DATA = 'pizza/FETCH_PIZZA_DATA';
 export const UPDATE_PIZZA_DATA_PRICES = 'pizza/UPDATE_PIZZA_DATA_PRICES';
 
-const initialState = {
+export const initialState = {
   orderCount: 0,
   pizzaData: [],
   orders: []

@@ -60,7 +60,7 @@ class AdminLogin extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit} className="admin-login-form">
+      <form onSubmit={e => this.handleSubmit(e)} className="admin-login-form">
         {this.renderUserNameInput()}
         {this.renderPasswordInput()}
         <input type="submit" value="Submit" className="submit-input" />
