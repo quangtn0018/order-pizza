@@ -1,4 +1,4 @@
-#Backend
+# Backend
 
 credentials to login for admin page
 
@@ -12,7 +12,7 @@ yarn
 npm start
 ```
 
-#Frontend
+# Frontend
 
 ```
 cd order-pizza
@@ -20,7 +20,8 @@ yarn
 yarn start // on port 3000
 ```
 
-#To run Frontend tests
+# To run Frontend tests
+
 First install watchman
 
 https://facebook.github.io/watchman/docs/install.html
