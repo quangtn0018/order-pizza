@@ -58,6 +58,16 @@ export const fetchPizzaData = () => {
 // TODO notification when update is successful/unsuccesful
 export const updatePizzaDataPrices = pizzaData => {
   return dispatch => {
+    fetch('/pizzaData', {
+      method: 'POST',
+      body: JSON.stringify(pizzaData),
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    })
+      .then(res => res.json())
+      .catch(error => console.error('Error:', error))
+      .then(response => {});
     dispatch({
       type: UPDATE_PIZZA_DATA_PRICES,
       payload: pizzaData
